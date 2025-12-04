@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="/Mu_Competition_Web/">
 
   <meta charset="UTF-8">
@@ -31,9 +19,55 @@
 
   <title>codit_competition</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- CUSTOM CSS FOR THE LOADER -->
+  <style>
+    /* CSS to center and style the loader container */
+    .container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff; /* Customize background color */
+        z-index: 10;
+        /* Add transition for the fade out effect */
+        transition: opacity 0.3s ease-out;
+    }
+    /* Style your GIF image */
+    .loader-gif {
+        width: 150px; /* Adjust the size of the GIF as needed */
+        height: auto;
+    }
+  </style>
+
 </head>
 <body>
+    
+  <!-- YOUR LOADING INDICATOR HTML -->
+  <div id="loading_indicator" class="container">
+
+    <img src="assets/assets/Loading animation blue.gif" alt="Loading animation" class="loader-gif">
+  </div>
+
+  <!-- This script hides the loader when Flutter is ready -->
+  <script>
+    window.addEventListener("flutter-first-frame", function() {
+      var loadingIndicator = document.getElementById("loading_indicator");
+      if (loadingIndicator) {
+        // Start fade out animation
+        loadingIndicator.style.opacity = 0;
+        // Remove element from DOM after transition completes (0.3s)
+        setTimeout(function() {
+          loadingIndicator.remove();
+        }, 300); 
+      }
+    });
+  </script>
+  
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
-
