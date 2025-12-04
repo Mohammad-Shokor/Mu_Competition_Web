@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <base href="/Mu_Competition_Web/">
 
   <meta charset="UTF-8">
@@ -20,9 +19,11 @@
   <title>codit_competition</title>
   <link rel="manifest" href="manifest.json">
 
+  <!-- Load the Lottie Web Player Library from a CDN -->
+  <script src="unpkg.com" type="module"></script>
+
   <!-- CUSTOM CSS FOR THE LOADER -->
   <style>
-    /* CSS to center and style the loader container */
     .container {
         position: fixed;
         top: 0;
@@ -32,15 +33,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* UPDATED: Background color changed to black */
-        background-color: #000000; 
+        background-color: #000000; /* Background is black */
         z-index: 10;
-        /* Add transition for the fade out effect */
         transition: opacity 0.3s ease-out;
     }
-    /* Style your GIF image */
-    .loader-gif {
-        /* UPDATED: Increased size of the GIF */
+    /* Style the Lottie custom element */
+    dotlottie-wc {
+        /* Set a large size, it's vector-based and won't be blurry! */
         width: 400px; 
         height: auto;
     }
@@ -51,8 +50,13 @@
     
   <!-- YOUR LOADING INDICATOR HTML -->
   <div id="loading_indicator" class="container">
-
-    <img src="assets/assets/Loading animation blue.gif" alt="Loading animation" class="loader-gif">
+    <!-- Use the <dotlottie-wc> element and the correct JSON file name -->
+    <dotlottie-wc 
+      src="assets/assets/Loading animation blue.json" 
+      autoplay 
+      loop 
+      mode="forward">
+    </dotlottie-wc>
   </div>
 
   <!-- This script hides the loader when Flutter is ready -->
@@ -60,9 +64,7 @@
     window.addEventListener("flutter-first-frame", function() {
       var loadingIndicator = document.getElementById("loading_indicator");
       if (loadingIndicator) {
-        // Start fade out animation
         loadingIndicator.style.opacity = 0;
-        // Remove element from DOM after transition completes (0.3s)
         setTimeout(function() {
           loadingIndicator.remove();
         }, 300); 
