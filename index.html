@@ -19,8 +19,9 @@
   <title>codit_competition</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- 1. ADD THE LOTTIE WEB PLAYER SCRIPT (Recommended CDN from LottieFiles) -->
-  <script src="unpkg.com" type="module"></script>
+  <!-- 1. ADD THE STANDARD LOTTIE WEB PLAYER SCRIPT (from cdnjs) -->
+  <!-- We use the reliable lottie-web library instead of the newer web component -->
+  <script src="cdnjs.cloudflare.com"></script>
 
   <!-- CUSTOM CSS FOR THE LOADER -->
   <style>
@@ -33,11 +34,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        /* Background color changed back to white */
         background-color: #FFFFFF; 
         z-index: 10;
         transition: opacity 0.3s ease-out;
     }
-    .loader-lottie {
+    /* The animation will render inside the #lottie-container DIV */
+    #lottie-container {
         width: 400px; 
         height: 400px;
     }
@@ -46,23 +49,29 @@
 </head>
 <body>
     
-  <!-- 2. REPLACE THE IMG TAG WITH THE LOTTIE WEB COMPONENT (<dotlottie-wc>) -->
+  <!-- 2. ADD AN EMPTY DIV CONTAINER for Lottie to target -->
   <div id="loading_indicator" class="container">
-    <dotlottie-wc
-      src="assets/assets/Glow loading.json" <!-- UPDATED: Changed the src to your specific file name -->
-      class="loader-lottie"
-      autoplay
-      loop
-      mode="normal"
-    ></dotlottie-wc>
+    <div id="lottie-container"></div>
   </div>
 
-  <!-- This script hides the loader when Flutter is ready -->
+  <!-- This script initializes the Lottie animation and hides the loader -->
   <script>
+    // 3. Initialize the Lottie animation using JavaScript
+    lottie.loadAnimation({
+      container: document.getElementById('lottie-container'), // the DOM element that will contain the animation
+      renderer: 'svg', // Use 'svg' or 'canvas'
+      loop: true,
+      autoplay: true,
+      path: 'assets/assets/Glow loading.json' // Path to your JSON file
+    });
+
+    // 4. This script hides the loader when Flutter is ready
     window.addEventListener("flutter-first-frame", function() {
       var loadingIndicator = document.getElementById("loading_indicator");
       if (loadingIndicator) {
+        // Start fade out animation
         loadingIndicator.style.opacity = 0;
+        // Remove element from DOM after transition completes (0.3s matches CSS transition)
         setTimeout(function() {
           loadingIndicator.remove();
         }, 300); 
