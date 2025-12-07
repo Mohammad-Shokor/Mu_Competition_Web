@@ -42282,12 +42282,12 @@ m=A.cM(25)
 l=e.e
 l===$&&A.b()
 l=l[e.d]
-n=A.cY(d,A.c_(l,d,d,d,A.cV().$3$color$fontSize$fontWeight(B.f,q?40:28,B.Y),B.aR,d),B.t,new A.bO(n,d,d,m,d,d,B.R),d,d,B.d8,d)
-m=A.cr(d,50,d)
+n=A.cY(d,A.c_(l,d,d,d,A.cV().$3$color$fontSize$fontWeight(B.f,q?40:24,B.Y),B.aR,d),B.t,new A.bO(n,d,d,m,d,d,B.R),d,d,B.d8,d)
+m=A.cr(d,30,d)
 l=e.w
 l===$&&A.b()
 l=J.ly(l[e.d],new A.agc(e,b,a),t.YA)
-l=A.kf(A.dp(A.Z(l,!0,l.$ti.i("ag.E")),B.a2,B.jE,B.a5,20),1)
+l=A.kf(A.dp(A.Z(l,!0,l.$ti.i("ag.E")),B.a2,B.jE,B.a5,15),1)
 k=b>600
 j=k?0.11*b:90
 k=k?0.11*b:90
@@ -42368,13 +42368,13 @@ $1(a){var s=this.a,r=s.gAH()
 return new A.mC(s.y,r,null)},
 $S:91}
 A.agc.prototype={
-$1(a){var s,r,q=null,p=this.b,o=p>700
-p=o?p*0.48:p*0.85
+$1(a){var s,r,q=null,p=this.b
+p=p>700?p*0.48:p*0.85
 s=this.a
 r=t.b
 r=A.qI(q,q,q,new A.bs(new A.ag5(s,a),r),q,q,q,q,new A.bs(new A.ag6(),r),q,q,q,q,q,q,q,q,q,new A.bl(new A.cq(A.cM(20),B.r),t._o),q,q,q,q,q,q)
 s=s.ay?new A.ag7(s,a):q
-return A.cr(A.xg(A.c_(a,q,q,q,A.cV().$2$fontSize$fontWeight(o?25:18,B.U),q,q),s,r),this.c*0.07,p)},
+return A.cr(A.xg(A.c_(a,q,q,q,A.cV().$2$fontSize$fontWeight(18,B.U),q,q),s,r),this.c*0.07,p)},
 $S:144}
 A.ag5.prototype={
 $1(a){var s,r=this.b,q=this.a
